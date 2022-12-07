@@ -29,17 +29,21 @@ if (fs.existsSync(fileDirectory)) {
                 let ratio = width / height
 
                 if (ratio > 1) {
-                    if (width < (screenWidth / 4) || height < (screenheight / 4)) {
-                        newMkdirName = '分辨率低'
-                    } else if (width < (screenWidth / 4) && height < (screenheight / 4)) {
-                        newMkdirName = '分辨率太低了'
-                    } else {
-                        if (ratio < (screenWidth / screenheight)) {
-                            newMkdirName = '待等比放大到宽度'
+                    if (ratio < (screenWidth / screenheight)) {
+                        if (width < (screenWidth / 3) || height < (screenheight / 3)) {
+                            newMkdirName = '低分辨率_宽度'
                         } else {
-                            newMkdirName = '待等比放大到高度'
+                            newMkdirName = '宽度'
+                        }
+                    } else {
+                        if (width < (screenWidth / 3) || height < (screenheight / 3)) {
+                            newMkdirName = '低分辨率_高度'
+                        } else {
+                            newMkdirName = '高度'
                         }
                     }
+
+
                 } else {
                     newMkdirName = '方图和竖图'
                 }
