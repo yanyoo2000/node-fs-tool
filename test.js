@@ -64,7 +64,7 @@ if (fs.existsSync(fileDirectory)) {
         });
     });
 } else {
-    console.log(fileDirectory + '  没有找到!');
+    console.log(`路径: ${count} 没有找到!`);
     fs.mkdir(fileDirectory, function (err) {
         if (err) {
             console.log(err);
