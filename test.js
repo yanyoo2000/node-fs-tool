@@ -29,8 +29,10 @@ if (fs.existsSync(fileDirectory)) {
                 let ratio = width / height
 
                 if (ratio > 1) {
-                    if (width < (screenWidth / 4) && height < (screenheight / 4)) {
-                        newMkdirName = '分辨率过低'
+                    if (width < (screenWidth / 4) || height < (screenheight / 4)) {
+                        newMkdirName = '分辨率低'
+                    } else if (width < (screenWidth / 4) && height < (screenheight / 4)) {
+                        newMkdirName = '分辨率太低了'
                     } else {
                         if (ratio < (screenWidth / screenheight)) {
                             newMkdirName = '待等比放大到宽度'
