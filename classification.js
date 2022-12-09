@@ -9,6 +9,9 @@ let screenheight = 2160
 
 let newMkdirName = ''
 
+let history = []
+let renameIndex = -1
+
 // 判断目录是否存在
 if (fs.existsSync(fileDirectory)) {
     // 获取文件列表
@@ -29,17 +32,22 @@ if (fs.existsSync(fileDirectory)) {
                 let ratio = width / height
 
                 if (ratio > 1) {
+
                     if (ratio < (screenWidth / screenheight)) {
-                        if (width < (screenWidth / 3) || height < (screenheight / 3)) {
-                            newMkdirName = '低分辨率_宽度'
+                        if (width > screenWidth && height > screenheight) {
+                            newMkdirName = '高分辨率_宽度w'
+                        } else if (height < (screenheight / 4)) {
+                            newMkdirName = '低分辨率_宽度w'
                         } else {
-                            newMkdirName = '宽度'
+                            newMkdirName = '宽度w'
                         }
                     } else {
-                        if (width < (screenWidth / 3) || height < (screenheight / 3)) {
-                            newMkdirName = '低分辨率_高度'
+                        if (width > screenWidth && height > screenheight) {
+                            newMkdirName = '高分辨率_高度h'
+                        } else if (width < (screenWidth / 4)) {
+                            newMkdirName = '低分辨率_高度h'
                         } else {
-                            newMkdirName = '高度'
+                            newMkdirName = '高度h'
                         }
                     }
 
@@ -47,6 +55,8 @@ if (fs.existsSync(fileDirectory)) {
                 } else {
                     newMkdirName = '方图和竖图'
                 }
+                count++
+                history.push({ id: count, dir: newMkdirName })
                 let newMkdir = `C:\\Users\\yanyoo2000\\Desktop\\${newMkdirName}\\`
                 if (fs.existsSync(newMkdir) === false) {
                     fs.mkdir(newMkdir, function (err) {
@@ -54,17 +64,17 @@ if (fs.existsSync(fileDirectory)) {
                             console.log(err);
                             return;
                         }
-                        console.log(`创建文件夹${newMkdirName}成功`);
+                        console.log(`创建 文件夹'${newMkdirName}'成功`);
                     });
                 }
                 let newFilepath = newMkdir + filename
                 fs.rename(filepath, newFilepath, function (err) {
+                    renameIndex++
                     if (err) {
                         console.log(err);
                         return;
                     }
-                    count++
-                    console.log(`NO.${count}  移动到'${newMkdirName}'文件夹  ${filename}`);
+                    console.log(`NO.${history[renameIndex].id}  移动到'${history[renameIndex].dir}'文件夹  ${filename}`);
                 });
             }
         });
