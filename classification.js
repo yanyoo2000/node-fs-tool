@@ -34,7 +34,7 @@ if (fs.existsSync(fileDirectory)) {
                 if (ratio > 1) {
 
                     if (ratio < (screenWidth / screenheight)) {
-                        if (width > screenWidth && height > screenheight) {
+                        if (width * height * 16 > 178956970) {
                             newMkdirName = '高分辨率_宽度w'
                         } else if (height < (screenheight / 4)) {
                             newMkdirName = '低分辨率_宽度w'
@@ -42,7 +42,7 @@ if (fs.existsSync(fileDirectory)) {
                             newMkdirName = '宽度w'
                         }
                     } else {
-                        if (width > screenWidth && height > screenheight) {
+                        if (width * height * 16 > 178956970) {
                             newMkdirName = '高分辨率_高度h'
                         } else if (width < (screenWidth / 4)) {
                             newMkdirName = '低分辨率_高度h'
