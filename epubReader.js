@@ -3,7 +3,7 @@ var path = require("path");
 var fileDirectory = path.resolve("C:\\Users\\yanyoo2000\\Desktop\\epub");
 
 if (!fs.existsSync(fileDirectory)) {
-  console.log(`路径: ${fileDirectory} 没有找到!`);
+  console.log(`路径: ${fileDirectory} 没有 找到!`);
   return;
 }
 
