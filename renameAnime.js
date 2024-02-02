@@ -47,20 +47,21 @@ let replace = (text, matchString) => {
         newFile = replace(newFile, tag);
       });
 
-      // if (newFile.includes("[") || newFile.includes("]")) {
-      //   newFile = newFile.replaceAll("[", " ");
-      //   newFile = newFile.replaceAll("]", " ");
-      //   newFile = newFile
-      //     .split(" ")
-      //     .filter((item) => item.trim() !== "")
-      //     .join("-");
+      if (newFile.includes("[") || newFile.includes("]")) {
+        newFile = newFile.replaceAll("[", " ");
+        newFile = newFile.replaceAll("]", " ");
+        newFile = newFile
+          .split(" ")
+          .filter((item) => item.trim() !== "")
+          .join(" ");
 
-      //   let pos = newFile.lastIndexOf("-");
-      //   if (pos !== -1) {
-      //     newFile = newFile.slice(0, pos) + newFile.slice(pos + 1);
-      //   }
-      //   newFile = newFile.replaceAll("-", " - ");
-      // }
+        let pos = newFile.lastIndexOf(" ");
+        if (pos !== -1) {
+          newFile = newFile.slice(0, pos) + newFile.slice(pos + 1);
+        }
+      }
+
+      newFile = newFile.trim();
 
       const oldPath = path.join(folderPath, file);
       const newPath = path.join(folderPath, newFile);
