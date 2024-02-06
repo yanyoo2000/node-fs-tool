@@ -18,6 +18,8 @@ let removeTags = [
   "LoliHouse",
   "Sakurato",
   "Nekomoe kissaten",
+  "DMG",
+  "Kamigami",
   "ANi",
   "1080",
   "10bit",
