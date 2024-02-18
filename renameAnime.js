@@ -15,6 +15,7 @@ if (!fs.existsSync(folderPath)) {
 
 let removeTags = [
   "POPGO",
+  "LKSUB",
   "LoliHouse",
   "Sakurato",
   "Nekomoe kissaten",
