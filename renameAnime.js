@@ -14,8 +14,11 @@ if (!fs.existsSync(folderPath)) {
 }
 
 let removeTags = [
+  "KitaujiSub ",
+  "Comicat",
   "POPGO",
   "LKSUB",
+  "[Airota]",
   "LoliHouse",
   "Sakurato",
   "XKsub",

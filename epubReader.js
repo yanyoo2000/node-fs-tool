@@ -26,12 +26,15 @@ spineLines
         .match(/src="([^"]+)"/)[1]
     )
   )
-  .forEach((element, index) => {
-    fs.renameSync(
-      element,
-      element.replace(
-        /-0*(\d+)/,
-        "-" + parseInt(index, 10).toString(10).padStart(4, "0")
-      )
-    );
+  .forEach((path, index) => {
+    console.log(index, path);
+    if (path.includes("-")) {
+      fs.renameSync(
+        path,
+        path.replace(
+          /-0*(\d+)/,
+          "-" + parseInt(index, 10).toString(10).padStart(4, "0")
+        )
+      );
+    }
   });
